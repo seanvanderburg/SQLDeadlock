@@ -11,17 +11,17 @@ public class DConnector {
 
 		new Thread(new Runnable() {
 			public void run() {
-				seansMethod();
+				runData();
 			}
 		},"thread1").start();
 		new Thread(new Runnable() {
 			public void run() {
-				seansMethod();
+				runData();
 			}
 		},"thread2").start();
 		}
 		
-	public static void seansMethod(){
+	public static void runData(){
 		while(true){
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
@@ -30,9 +30,9 @@ public class DConnector {
 						"Cannot find the driver in the classpath!", e);
 			}
 
-			String url = "jdbc:mysql://localhost:3306/anlop1";
-			String username = "sean";
-			String password = "boeing707";
+			String url = "jdbc:mysql://localhost:3306/DATABASENAME";
+			String username = "USER";
+			String password = "PASSWORD";
 			Connection connection = null;
 			try {
 				connection = DriverManager.getConnection(url, username,
@@ -62,9 +62,9 @@ public class DConnector {
 				}
 				
 				int queue = (int) (Math.random() * 11);
-				System.out.println("\n" + Thread.currentThread().getName() + ": Slaap " +
+				System.out.println("\n" + Thread.currentThread().getName() + ": Sleep " +
 				queue + " sec");
-				 // Slaap wachtTijd seconden
+				 // sleep some seconds
 				
 				 Thread.sleep(queue * 1000);
 				stmt.executeUpdate("UPDATE product SET AANTAL = 125");
