@@ -41,7 +41,7 @@ public class DConnector {
 				connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
 				Statement stmt = (Statement) connection.createStatement();
 				ResultSet seta = null;
-				stmt.executeUpdate("DELETE FROM product WHERE naam = 'videokaart' OR  naam = 'harde schijf'");
+				stmt.executeUpdate("DELETE FROM product WHERE name = 'videokaart' OR  name = 'harde schijf'");
 				stmt.executeUpdate("INSERT INTO product VALUES ('videokaart', 100)");
 				stmt.executeQuery("START TRANSACTION");
 				Thread.sleep(1000);
@@ -67,7 +67,7 @@ public class DConnector {
 				 // sleep some seconds
 				
 				 Thread.sleep(queue * 1000);
-				stmt.executeUpdate("UPDATE product SET AANTAL = 125");
+				stmt.executeUpdate("UPDATE product SET amount = 125");
 connection.commit();
 			} catch (SQLException e) {
 				throw new RuntimeException("Cannot connect the database!",
